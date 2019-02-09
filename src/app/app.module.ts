@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import firebaseconfig  from '../firebaseconfig';
+import { environment } from '../environments/environment';
 import { RouterModule , Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'; 
@@ -46,7 +46,7 @@ const routes:Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     AngularFirestoreModule,
-    AngularFireModule.initializeApp(firebaseconfig),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule
   ],
   providers: [],
