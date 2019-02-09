@@ -16,18 +16,24 @@ import { HomeComponent } from './components/home/home.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
+import { MainComponent } from './components/main/main.component';
+import { HeaderComponent } from './components/header/header.component';
 
 const routes:Routes = [
-	{ path : "" , component : HomeComponent , canActivate : [AuthguardService] },
+	{ path : '' , component : MainComponent , canActivate : [AuthguardService],
+  children:[
+    { path : 'home' , component : HomeComponent },
+    { path : "posts" , component : PostsComponent ,
+      children : [
+        { path : ':id' , component : PostDetailComponent }
+      ]
+    }
+  ]
+  },
 	{ path : "login" , component : LoginComponent },
 	{ path : "signup" , component : SignupComponent },
-	{ path : "posts" , component : PostsComponent , canActivate : [AuthguardService],
-		children : [
-			{ path : ':id' , component : PostDetailComponent }
-		]
-	},
 	{
-		path:'**' , redirectTo:'login'
+		path:'**' , redirectTo:''
 	}
 ];
 
@@ -38,7 +44,9 @@ const routes:Routes = [
     HomeComponent,
     SignupComponent,
     PostsComponent,
-    PostDetailComponent
+    PostDetailComponent,
+    MainComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

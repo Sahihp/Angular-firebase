@@ -1,0 +1,18 @@
+.login{
+	display: table;
+	margin:0 auto;
+	margin-top:15vh;
+}
+
+.loginHeader{
+	text-align: center;
+	margin: 15px 0 30px 0;
+}
+
+.msg{
+	overflow-wrap: break-word;
+}
+
+.form{
+	max-width: 300px;
+}
