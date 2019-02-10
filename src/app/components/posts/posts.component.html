@@ -1,3 +1,17 @@
 <h1>Posts</h1>
 
-<router-outlet></router-outlet>
+<div class="posts">
+	<div class="postsList">
+		<ul class="list-group">
+			<li class="list-group-item d-flex justify-content-between align-items-center listItem" *ngFor="let post of posts" [ngClass]="{ 'active' : selectedItem == post.id }" (click)="onListClick(post)">
+				{{ post.title }}
+				<span class="badge badge-primary badge-pill">10</span>
+			</li>
+		</ul>
+	</div>
+	<div class="postDetailContainer">
+		<router-outlet></router-outlet>
+	</div>
+
+</div>
+

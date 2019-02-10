@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-posts',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostsComponent implements OnInit {
 
-  constructor() { }
+	posts:any[];
+	selectedItem:any;
+	all:boolean = false;
+	test:any;
 
-  ngOnInit() {
-  }
+	constructor(
+		private db : AngularFirestore,
+		private fa : AngularFireAuth
+	) { }
 
+	ngOnInit() {
+		this.test = this.db.collection('posts' , ref => ref.where('created_by' , '==' , localStorage.getItem('token') ) ).snapshotChanges()
+		.subscribe((arr) => {
+			this.posts = arr.map((postsData) => {
+				return {
+					...postsData.payload.doc.data(),
+					id : postsData.payload.doc.id
+				}
+			});
+		});
+	}
+
+	onListClick(post){
+		this.selectedItem = post.id;
+	}
 }
