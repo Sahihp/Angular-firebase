@@ -46,4 +46,10 @@ export class PostformComponent implements OnInit {
   		this.closeForm.emit();
   	}
 
+    formWindowClicked(e){
+      if ( e.target.className == 'postWindow' ){
+        this.destroyForm();
+      }
+    }
+
 }

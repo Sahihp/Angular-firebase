@@ -1,4 +1,4 @@
-<div class="postWindow">
+<div class="postWindow" (click)="formWindowClicked($event)">
 	<div class="formParent">
 		<form [formGroup] = "postForm" (ngSubmit)="formSubmit()">
 			<h4>Add Post</h4>
