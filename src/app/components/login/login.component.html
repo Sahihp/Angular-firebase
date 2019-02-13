@@ -11,7 +11,7 @@
 			<label>Password</label>
 			<input type="password" class="form-control" formControlName="password">
 		</div>
-		<button type="text" class="btn btn-success">Login</button>
+		<button type="text" class="btn btn-success" [disabled]="sendingRequest">Login</button>
 	</form>
 	<br>
 	<span>Don't have any account? </span>

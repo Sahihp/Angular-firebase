@@ -18,6 +18,7 @@ import { PostsComponent } from './components/posts/posts.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { MainComponent } from './components/main/main.component';
 import { HeaderComponent } from './components/header/header.component';
+import { PostformComponent } from './components/posts/forms/postform/postform.component';
 
 const routes:Routes = [
 	{ path : '' , component : MainComponent , canActivate : [AuthguardService],
@@ -46,7 +47,8 @@ const routes:Routes = [
     PostsComponent,
     PostDetailComponent,
     MainComponent,
-    HeaderComponent
+    HeaderComponent,
+    PostformComponent
   ],
   imports: [
     BrowserModule,

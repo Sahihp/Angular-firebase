@@ -13,6 +13,8 @@ export class PostsComponent implements OnInit {
 	selectedItem:any;
 	all:boolean = false;
 	test:any;
+	addWindow:any;
+	displayWindow:boolean = false;
 
 	constructor(
 		private db : AngularFirestore,
@@ -28,10 +30,27 @@ export class PostsComponent implements OnInit {
 					id : postsData.payload.doc.id
 				}
 			});
+			console.log(this.posts);
 		});
 	}
 
 	onListClick(post){
 		this.selectedItem = post.id;
+	}
+
+	openWindow(){
+
+		this.displayWindow = true;
+	}
+
+	onClose(){
+		this.displayWindow = false;	
+	}
+
+	addPost(post){
+		this.db.collection('posts').add(post).then((res)=>{
+			console.log(res);
+			this.displayWindow = false;
+		})
 	}
 }

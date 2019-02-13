@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
     fromSignup:boolean = false;
     resError : boolean = false;
     resMsg : string;
+    sendingRequest:boolean = false;
 
     form : FormGroup;
 
@@ -46,6 +47,9 @@ export class LoginComponent implements OnInit {
         if ( this.form.valid ){
             const { email , password } = this.form.value;
             console.log('valid');
+
+            this.sendingRequest = true;
+
             this.auth.auth.signInWithEmailAndPassword( email , password )
             .then((res) => {
                 console.log(res);
@@ -53,6 +57,7 @@ export class LoginComponent implements OnInit {
                 this.router.navigate(['']);
             })
             .catch((e)=>{
+                this.sendingRequest = false;
                 this.resError = true;
                 this.resMsg = e.message;
 

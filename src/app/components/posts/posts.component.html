@@ -1,17 +1,23 @@
-<h1>Posts</h1>
+<div id="postsDiv">
+	<h1>Posts</h1>
+	<button style="margin:15px;" (click)="openWindow()" class="btn btn-primary">Add post</button>
 
-<div class="posts">
-	<div class="postsList">
-		<ul class="list-group">
-			<li class="list-group-item d-flex justify-content-between align-items-center listItem" *ngFor="let post of posts" [ngClass]="{ 'active' : selectedItem == post.id }" (click)="onListClick(post)">
-				{{ post.title }}
-				<span class="badge badge-primary badge-pill">10</span>
-			</li>
-		</ul>
-	</div>
-	<div class="postDetailContainer">
-		<router-outlet></router-outlet>
-	</div>
+	<div class="posts">
+		<div class="postsList">
+			<ul class="list-group">
+				<li class="list-group-item d-flex justify-content-between align-items-center listItem" *ngFor="let post of posts" [ngClass]="{ 'active' : selectedItem == post.id }" (click)="onListClick(post)">
+					{{ post.title }}
+					<span class="badge badge-primary badge-pill">10</span>
+				</li>
+			</ul>
+		</div>
+		<div class="postDetailContainer">
+			<router-outlet></router-outlet>
+		</div>
 
+	</div>
+	<div *ngIf="displayWindow">
+		<app-postform (closeForm)="onClose()" (addPost)="addPost($event)"></app-postform>
+	</div>
 </div>
 
