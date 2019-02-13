@@ -63,7 +63,6 @@ export class SignupComponent implements OnInit {
 
 	  		this.auth.auth.createUserWithEmailAndPassword( email , password )
 	  		.then(res => {
-	  			console.log(res);
 	  			this.sendingRequest = false;
 	  			this.router.navigate(['login']);
 	  		})

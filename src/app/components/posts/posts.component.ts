@@ -30,7 +30,6 @@ export class PostsComponent implements OnInit {
 					id : postsData.payload.doc.id
 				}
 			});
-			console.log(this.posts);
 		});
 	}
 
@@ -49,7 +48,6 @@ export class PostsComponent implements OnInit {
 
 	addPost(post){
 		this.db.collection('posts').add(post).then((res)=>{
-			console.log(res);
 			this.displayWindow = false;
 		})
 	}

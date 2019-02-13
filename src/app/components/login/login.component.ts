@@ -52,7 +52,6 @@ export class LoginComponent implements OnInit {
 
             this.auth.auth.signInWithEmailAndPassword( email , password )
             .then((res) => {
-                console.log(res);
                 localStorage.setItem( 'token' , res.user.uid );
                 this.router.navigate(['']);
             })
