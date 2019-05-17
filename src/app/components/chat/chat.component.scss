@@ -1,0 +1,32 @@
+.chat {
+	position:relative;
+	top: 15vh;
+	height: 85vh;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+
+	.chatlist {
+		height: 100%;
+		width: 25%;
+	}
+
+	.chatMessages {
+		height: 100%;
+		width: 70%;
+	}
+
+	.usersList{
+	    height: 100%;
+	    width: 100%;
+	    position: absolute;
+    	background: rgba(0,0,0,0.4);
+
+	}
+
+	.users{
+	    justify-content: center;
+	    align-items: center;
+	    text-align: center;
+	}
+}

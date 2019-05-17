@@ -1,0 +1,18 @@
+.menu {
+	position:fixed;
+	z-index: 100;
+	background-color: #cacaca;
+	border-radius: 5px;
+	min-width: 75px;
+	cursor: pointer;
+	padding:5px;
+	li {
+		list-style-type: none;
+
+		&:hover{
+			color:red;
+		};
+
+	}
+
+}

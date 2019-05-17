@@ -3,11 +3,12 @@ import { Router } from '@angular/router';
 import { LoginService } from '../../services/auth/login.service';
 import { FormGroup , Validators , FormControl , FormBuilder } from '@angular/forms'; 
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   	selector: 'app-login',
   	templateUrl: './login.component.html',
-  	styleUrls: ['./login.component.css']
+  	styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
   		private router : Router,
         private loginService : LoginService,
         private fb : FormBuilder,
-        private auth : AngularFireAuth
+        private auth : AngularFireAuth,
+        private store : AngularFirestore
   	) {
 
         if ( localStorage.getItem('token') ){
@@ -40,6 +42,8 @@ export class LoginComponent implements OnInit {
             password : ['' , Validators.compose( [ Validators.required , Validators.minLength(6) ] )]
             // password : ['' , Validators.required]
         });
+
+        window['store'] = this.store;
   	}
 
     login(){

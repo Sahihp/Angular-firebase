@@ -1,0 +1,7 @@
+<div [ngStyle]="{left:clientX , top : clientY}" class="menu" >
+	
+		<li *ngFor="let menu of items" (click)="onMenuClick(menu)">
+			{{ menu.title }}
+		</li>
+	
+</div>

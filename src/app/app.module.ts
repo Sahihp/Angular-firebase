@@ -19,6 +19,11 @@ import { PostDetailComponent } from './components/post-detail/post-detail.compon
 import { MainComponent } from './components/main/main.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PostformComponent } from './components/posts/forms/postform/postform.component';
+import { CommentsformComponent } from './components/posts/forms/commentsform/commentsform.component';
+import { TestsComponent } from './components/tests/tests.component';
+import { MenusComponent } from './components/menus/menus.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { ChatMessagesComponent } from './components/chat/chat-messages/chat-messages.component';
 
 const routes:Routes = [
 	{ path : '' , component : MainComponent , canActivate : [AuthguardService],
@@ -28,11 +33,15 @@ const routes:Routes = [
       children : [
         { path : ':id' , component : PostDetailComponent }
       ]
-    }
+    },
+    { path : "test" , component : TestsComponent },
+    { path:'chat' , component : ChatComponent , children:[
+      {path:':chatId' , component : ChatMessagesComponent}
+    ]}
   ]
   },
 	{ path : "login" , component : LoginComponent },
-	{ path : "signup" , component : SignupComponent },
+  { path : "signup" , component : SignupComponent },	
 	{
 		path:'**' , redirectTo:''
 	}
@@ -48,7 +57,12 @@ const routes:Routes = [
     PostDetailComponent,
     MainComponent,
     HeaderComponent,
-    PostformComponent
+    PostformComponent,
+    CommentsformComponent,
+    TestsComponent,
+    MenusComponent,
+    ChatComponent,
+    ChatMessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +73,7 @@ const routes:Routes = [
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule
   ],
+  entryComponents:[PostformComponent , MenusComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,35 @@
+.postsDiv{
+	top:11%;
+	
+	height:250px;
+	padding:10px;
+}
+.posts{
+	display: flex;
+	flex-direction: row;
+	padding: 0 20px;
+	position:relative;
+	height:calc(86vh);
+
+}
+
+.postsList{
+	/*position: absolute;*/
+	width:35vw;
+	/*height:150px;*/
+	overflow-y: auto;
+}
+
+.listItem{
+	cursor:pointer;
+}
+
+.postDetailContainer{
+	width:60vw;
+	margin-left: 5vw;
+}
+
+.postMenu{
+	position: absolute;
+	background: #fff;
+}

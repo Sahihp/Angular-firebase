@@ -4,15 +4,18 @@ import { FormGroup , FormControl , FormBuilder , Validators } from '@angular/for
 @Component({
   selector: 'app-postform',
   templateUrl: './postform.component.html',
-  styleUrls: ['./postform.component.css']
+  styleUrls: ['./postform.component.scss']
 })
 export class PostformComponent implements OnInit {
 
-	@Output() closeForm = new EventEmitter();
-	@Output() addPost = new EventEmitter();
-
-	postForm : FormGroup;
-	submitting : boolean = false;
+	  postForm : FormGroup;
+	  submitting : boolean = false;
+    selRef: any;
+    submitEvent = new EventEmitter();
+    formAction:any;
+    editData:any;
+    winTitle:string = 'Add post';
+    btnText : string = 'Add';
 
   	constructor(
   		private fb : FormBuilder
@@ -25,6 +28,16 @@ export class PostformComponent implements OnInit {
   			description : ['']
   		});
 
+      if ( this.formAction == 'edit' ){
+        this.winTitle = 'Edit post';
+        this.btnText = 'Update';
+
+        this.postForm.setValue({
+          title : this.editData.title,
+          description : this.editData.description
+        });
+      }
+
   	}
 
   	formSubmit(){
@@ -36,14 +49,15 @@ export class PostformComponent implements OnInit {
   				created_by : localStorage.getItem('token')
   			};
 
+        this.submitEvent.next(values);
+
   			this.submitting = true;
-  			this.addPost.emit(values);
 
   		}
   	}
 
   	destroyForm(){
-  		this.closeForm.emit();
+      this.selRef.destroy();
   	}
 
     formWindowClicked(e){

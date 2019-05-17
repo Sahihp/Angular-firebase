@@ -1,0 +1,27 @@
+<div class="chat">
+	
+	<div class="chatlist">
+		<div *ngIf="isLoading">
+			<button (click)="showModel()">Add chat</button>
+		</div>
+
+		<div *ngFor="let chat of chats" (click)="onChatClick(chat.id)">
+			{{ chat.id }}
+		</div>
+	</div>
+
+	<div class="chatMessages">
+		<router-outlet></router-outlet>
+	</div>
+
+
+	<div *ngIf="showUers" class="usersList" (click)="hideModel()"> 
+		<div class="users">
+			<div *ngFor="let user of users" (click)="onUseClick(user)">
+				{{ user.email }}
+			</div>
+		</div>
+
+	</div>
+
+</div>

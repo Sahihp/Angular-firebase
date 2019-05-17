@@ -1,3 +1,22 @@
-<p>
-  post-detail works!
-</p>
+<button class="btn btn-primary" (click)="openFormWindow()">Add comment</button>
+<div class="commentsPanel">
+	<div class="comments" *ngIf="comments?.length > 0; else emptyScreen">
+		<div>
+			<ul class="list-group">
+				<li class="list-group-item d-flex justify-content-between align-items-center listItem" *ngFor="let comment of comments">
+					{{ comment.title }}
+				</li>
+			</ul>
+		</div>
+	</div>
+	<ng-template #emptyScreen>
+		{{emptyMsg}}
+	</ng-template>
+
+	<div *ngIf="showWindow">
+
+		<app-commentsform (closeForm)="closeCommentForm()" (addComment)="addCommentToStore($event)"></app-commentsform>
+		
+	</div>
+
+</div>

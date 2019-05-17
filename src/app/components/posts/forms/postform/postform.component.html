@@ -1,7 +1,7 @@
 <div class="postWindow" (click)="formWindowClicked($event)">
 	<div class="formParent">
 		<form [formGroup] = "postForm" (ngSubmit)="formSubmit()">
-			<h4>Add Post</h4>
+			<h4>{{ winTitle }}</h4>
 			<div class="form-group">
 				<label>Title</label>
 				<input type="text" formControlName="title" class="form-control" placeHolder="Title" autofocus>
@@ -11,9 +11,8 @@
 				<textarea rows="5" formControlName="description" class="form-control" placeHolder="Description"></textarea>
 			</div>
 			<div class="formToolbar">
-				<button type="submit" class="btn btn-success" style="margin-right: 15px;" [disabled]="submitting">Submit</button>
+				<button type="submit" class="btn btn-success" style="margin-right: 15px;" [disabled]="submitting">{{btnText}}</button>
 				<button class="btn btn-success" type="button" style="margin-right: 15px;" (click)="destroyForm()">Cancel</button>
-				<button class="btn btn-success" type="reset">Reset</button>
 			</div>
 		</form>
 	</div>

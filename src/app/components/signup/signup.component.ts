@@ -8,7 +8,7 @@ import { LoginService } from '../../services/auth/login.service';
 @Component({
   	selector: 'app-signup',
   	templateUrl: './signup.component.html',
-  	styleUrls: ['./signup.component.css']
+  	styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
 
@@ -65,6 +65,12 @@ export class SignupComponent implements OnInit {
 	  		.then(res => {
 	  			this.sendingRequest = false;
 	  			this.router.navigate(['login']);
+
+          this.fs.collection('users').add({
+            id : res.user.uid,
+            email
+          });
+
 	  		})
 	  		.catch(e => {
 	  			console.log(e);

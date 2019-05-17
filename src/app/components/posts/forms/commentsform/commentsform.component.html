@@ -1,0 +1,15 @@
+<div class="commentWindow" (click)="formWindowClicked($event)">
+	<div class="formParent">
+		<form [formGroup]="commentForm" (ngSubmit)="onFormSubmit()">
+			<div class="form-group">
+				<label>Title</label>
+				<textarea formControlName="title" class="form-control" rows="5" placeholder="Write comment here"></textarea>
+			</div>
+			<div class="formToolbar">
+				<button type="submit" class="btn btn-success" style="margin-right: 15px;" [disabled]="submitting">Submit</button>
+				<button class="btn btn-success" type="button" style="margin-right: 15px;" (click)="destroyForm()">Cancel</button>
+				<button class="btn btn-success" type="reset">Reset</button>
+			</div>
+		</form>
+	</div>
+</div>
